@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kababjees Fried Chicken</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #ca0000;
+      --primary-dark: #a80000;
+      --primary-light: #ff0f0f;
+      --secondary: #222222;
+      --secondary-light: #333333;
+      --accent: #f8c100;
+      --accent-light: #ffde4d;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .menu-image:hover .overlay {
+      opacity: 1;
+    }
+    
+    .gallery-container::-webkit-scrollbar {
+      height: 0.5rem;
+    }
+    
+    .gallery-container::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+      border-radius: 9999px;
+    }
+    
+    .gallery-container::-webkit-scrollbar-thumb {
+      background-color: var(--primary);
+      border-radius: 9999px;
+    }
+    
+    .gallery-container::-webkit-scrollbar-thumb:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    .text-primary {
+      color: var(--primary);
+    }
+    
+    .bg-primary {
+      background-color: var(--primary);
+    }
+    
+    .hover\:bg-primary-dark:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    .text-accent {
+      color: var(--accent);
+    }
+    
+    .bg-accent {
+      background-color: var(--accent);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="bg-white shadow-md fixed top-0 w-full z-50 h-auto">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-3">
+        <!-- Logo -->
+         <div class="flex items-center justify-center space-x-2">
+             <a href="index.html" class="text-2xl font-bold text-primary flex items-center space-x-2">
+               <img src="/images/logo.png" alt="Kababjees Logo" class="h-32 w-32">
+               <span class="mt-6">Kababjees</span>
+         </div>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="font-poppins font-semibold text-primary hover:text-primary transition duration-300">
+            Home
+          </a>
+          <a href="menu.html" class="font-poppins font-semibold text-secondary hover:text-primary transition duration-300">
+            Menu
+          </a>
+          <a href="about.html" class="font-poppins font-semibold text-secondary hover:text-primary transition duration-300">
+            About
+          </a>
+          <a href="contact.html" class="font-poppins font-semibold text-secondary hover:text-primary transition duration-300">
+            Contact
+          </a>
+          <a href="menu.html" class="bg-primary hover:bg-primary-dark text-white font-poppins font-bold py-2 px-6 rounded-full transition duration-300">
+            Order Now
+          </a>
+        </nav>
+        
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button 
+            id="mobile-menu-button" 
+            class="text-secondary focus:outline-none"
+            aria-label="Toggle mobile menu"
+          >
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile Navigation -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <a href="index.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          Home
+        </a>
+        <a href="menu.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          Menu
+        </a>
+        <a href="about.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          About
+        </a>
+        <a href="contact.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          Contact
+        </a>
+        <a href="menu.html" class="inline-block bg-primary hover:bg-primary-dark text-white font-poppins font-bold py-2 px-6 rounded-full my-2">
+            Order Now
+          </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-24">
+    <!-- Hero Section -->
+    <div class="relative h-[500px] md:h-[700px] overflow-hidden mt-16 mb-16">
+      <div class="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&h=600&q=80" 
+          alt="Delicious Fried Chicken" 
+          class="w-full h-full object-cover"
+        >
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      </div>
+      <div class="absolute inset-0 flex items-center justify-center px-4">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
+            Kababjees <span class="text-accent">Fried Chicken</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-white mb-8 max-w-xl mx-auto">
+            Experience the ultimate crispy, juicy fried chicken with our special blend of spices
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="menu.html" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300">
+              View Menu
+            </a>
+            <a href="#order" class="bg-white hover:bg-gray-100 text-primary font-bold py-3 px-8 rounded-full transition duration-300">
+              Order Online
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Specialties Section -->
+    <div class="container mx-auto">
+      
+        <div class="w-[90%] h-[300px] mx-auto my-18">
+            <img src="/images/home-image.webp" alt="" class="w-full h-full rounded-lg shadow-lg">
+        </div>
+      <h2 class="text-3xl font-bold text-center mb-12 mt-12">Our <span class="text-primary">Specialties</span></h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Specialty 1 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+          <div class="relative h-60">
+            <img 
+              src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=250" 
+              alt="Original Fried Chicken" 
+              class="w-full h-full object-cover"
+            >
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Original Fried Chicken</h3>
+            <p class="text-gray-600 mb-4">Our classic crispy fried chicken with our secret blend of herbs and spices.</p>
+            <a href="menu.html" class="text-primary font-semibold hover:text-primary-dark inline-flex items-center">
+              Explore Menu <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Specialty 2 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+          <div class="relative h-60">
+            <img 
+              src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=250" 
+              alt="Signature Burgers" 
+              class="w-full h-full object-cover"
+            >
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Signature Burgers</h3>
+            <p class="text-gray-600 mb-4">Delicious burgers made with our juicy fried chicken and premium toppings.</p>
+            <a href="menu.html" class="text-primary font-semibold hover:text-primary-dark inline-flex items-center">
+              Explore Menu <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Specialty 3 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+          <div class="relative h-60">
+            <img 
+              src="/images/family-combos.jpeg" 
+              alt="Family Combos" 
+              class="w-full h-full object-cover"
+            >
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Family Combos</h3>
+            <p class="text-gray-600 mb-4">Value meals perfect for sharing with your family and friends.</p>
+            <a href="menu.html" class="text-primary font-semibold hover:text-primary-dark inline-flex items-center">
+              Explore Menu <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Promo Banner -->
+    <div class="bg-gray-900 py-16 md:mt-16">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+          <div class="md:w-1/2 mb-8 md:mb-0">
+            <h2 class="text-3xl font-bold text-white mb-4">Special Combo Deals</h2>
+            <p class="text-gray-300 mb-6 max-w-md">
+              Enjoy our special combo meals at discounted prices. Perfect for lunch, dinner or any occasion.
+            </p>
+            <a href="menu.html" class="bg-accent hover:bg-accent-light text-gray-900 font-bold py-3 px-8 rounded-full transition duration-300 inline-block">
+              Order Now <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+          <div class="md:w-1/2">
+            <img 
+              src="https://images.unsplash.com/photo-1505253758473-96b7015fcd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300" 
+              alt="Special Combo Deal" 
+              class="rounded-lg shadow-lg mx-auto"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Food Gallery -->
+    <div class="container mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold text-center mb-12">Food <span class="text-primary">Gallery</span></h2>
+      
+      <div class="gallery-container flex space-x-4 overflow-x-auto pb-4">
+        <div class="flex-shrink-0 w-80 h-60 rounded-lg overflow-hidden shadow-md">
+          <img 
+            src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&h=240" 
+            alt="Fried Chicken" 
+            class="w-full h-full object-cover"
+          >
+        </div>
+        <div class="flex-shrink-0 w-80 h-60 rounded-lg overflow-hidden shadow-md">
+          <img 
+            src="https://images.unsplash.com/photo-1585325701956-60dd9c8553bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&h=240" 
+            alt="Chicken Burger" 
+            class="w-full h-full object-cover"
+          >
+        </div>
+        <div class="flex-shrink-0 w-80 h-60 rounded-lg overflow-hidden shadow-md">
+          <img 
+            src="/images/wings.jpeg" 
+            alt="Crispy Wings" 
+            class="w-full h-full object-cover"
+          >
+        </div>
+        <div class="flex-shrink-0 w-80 h-60 rounded-lg overflow-hidden shadow-md">
+          <img 
+            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&h=240" 
+            alt="Deluxe Burger" 
+            class="w-full h-full object-cover"
+          >
+        </div>
+        <div class="flex-shrink-0 w-80 h-60 rounded-lg overflow-hidden shadow-md">
+          <img 
+            src="https://images.unsplash.com/photo-1550950158-d0d960dff51b?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&h=240" 
+            alt="Chicken Nuggets" 
+            class="w-full h-full object-cover"
+          >
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white pt-12 pb-6">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">Kababjees</h3>
+          <p class="text-gray-400 mb-4">
+            The best fried chicken with a unique Pakistani twist. Crispy, juicy, and full of flavor.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+            <li><a href="menu.html" class="text-gray-400 hover:text-white transition">Menu</a></li>
+            <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+            <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Order Online</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+              <span>123 Main Street, Karachi, Pakistan</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone mt-1 mr-3"></i>
+              <span>+92 123 456 7890</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope mt-1 mr-3"></i>
+              <span>info@kababjees.com</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Opening Hours</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li class="flex justify-between">
+              <span>Monday - Friday</span>
+              <span>11:00 AM - 10:00 PM</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Saturday - Sunday</span>
+              <span>10:00 AM - 11:00 PM</span>
+            </li>
+            <li class="flex justify-between pt-2 text-accent">
+              <span>Delivery Hours</span>
+              <span>11:00 AM - 9:30 PM</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 pt-6 text-center text-gray-400">
+        <p>&copy; 2023 Kababjees. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = this.querySelector('i');
+      
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      }
+    });
+  </script>
+</body>
+</html>

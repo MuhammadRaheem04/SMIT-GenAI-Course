@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saylani Welfare - Registration Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0066b3',
+            secondary: '#8dc63f'
+          }
+        },
+        fontFamily: {
+          'sans': ['Roboto', 'sans-serif']
+        }
+      }
+    }
+  </script>
+  <style>
+    .required:after {
+      content: " *";
+      color: red;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans w-full">
+  <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 flex flex-col items-center w-full">
+    <!-- Changed max-w-3xl to w-[90%] to make the form take 90% width -->
+    <div class="w-[90%] bg-white shadow-md rounded-lg overflow-hidden mb-6">
+      <!-- Header -->
+      <div class="bg-[#f0f0f0] p-4 flex flex-col items-center justify-center">
+        <img 
+          src="/saylani-logo-01.png" 
+          alt="Saylani Welfare Logo" 
+          class="h-16 mb-2"
+        />
+        <h1 class="text-black text-xl sm:text-2xl font-bold text-center">
+          Course Registration Form
+        </h1>
+      </div>
+      
+      <!-- Form Introduction -->
+      <div class="p-6">
+        <div class="mb-6 text-center">
+          <p class="text-gray-600">Fill out the form carefully for registration</p>
+        </div>
+        
+        <!-- Registration Form -->
+        <form class="space-y-6">
+          <!-- Basic Information Section -->
+          <div class="bg-gray-50 border border-gray-200 rounded-md p-4">
+            <h2 class="text-lg font-medium text-[#0066b3] mb-4">Basic Information</h2>
+            
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <!-- Select country -->
+              <div class="space-y-2">
+                <label for="firstName" class="block text-sm font-medium text-gray-700 required">
+                    Select country
+                </label>
+                <input 
+                  type="text" 
+                  id="countryName" 
+                  name="countryName" 
+                  placeholder="Select country" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  required
+                />
+              </div>
+
+              <!-- Select city -->
+                <div class="space-y-2">
+                    <label for="city" class="block text-sm font-medium text-gray-700 required">
+                      City
+                    </label>
+                    <select 
+                      id="city" 
+                      name="city" 
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                      required
+                    >
+                      <option value="" disabled selected>Select City</option>
+                      <option value="karachi">Karachi</option>
+                      <option value="lahore">Lahore</option>
+                      <option value="islamabad">Islamabad</option>
+                      <option value="peshawar">Peshawar</option>
+                      <option value="quetta">Quetta</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+              <!-- Select course or event -->
+              <!-- Course -->
+              <div class="space-y-2">
+                <label for="course" class="block text-sm font-medium text-gray-700 required">
+                  Select Course or event
+                </label>
+                <select 
+                  id="course" 
+                  name="course" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  required
+                >
+                  <option value="" disabled selected>Select Course</option>
+                  <option value="web-mobile">Web and Mobile App Development</option>
+                  <option value="graphic-design">Graphic Design</option>
+                  <option value="ccna">CCNA (Cisco Certified Network Associate)</option>
+                  <option value="artificial-intelligence">Artificial Intelligence</option>
+                  <option value="cyber-security">Cyber Security</option>
+                  <option value="cloud-computing">Cloud Computing</option>
+                </select>
+              </div>
+
+              <!-- Select your computer proficiency -->
+              <div class="space-y-2">
+                <label for="firstName" class="block text-sm font-medium text-gray-700 required">
+                  Select your computer proficiency
+                </label>
+                <input 
+                  type="text" 
+                  id="computerProficiency" 
+                  name="computerProficiency" 
+                  placeholder="Select your computer proficiency" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  required
+                />
+              </div>
+
+              <!-- Full name -->
+              <div class="space-y-2">
+                <label for="firstName" class="block text-sm font-medium text-gray-700 required">
+                  Full name
+                </label>
+                <input 
+                  type="text" 
+                  id="fullName" 
+                  name="fullName" 
+                  placeholder="Full name" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  required
+                />
+              </div>
+              
+              <!-- Father's Name -->
+              <div class="space-y-2">
+                <label for="fatherName" class="block text-sm font-medium text-gray-700 required">
+                  Father's Name
+                </label>
+                <input 
+                  type="text" 
+                  id="fatherName" 
+                  name="fatherName" 
+                  placeholder="Father's Name" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  required
+                />
+              </div>
+              
+              <!-- Email -->
+              <div class="space-y-2">
+                <label for="email" class="block text-sm font-medium text-gray-700 required">
+                  Email
+                </label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  placeholder="example@example.com" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  required
+                />
+              </div>
+              
+              <!-- Phone Number -->
+              <div class="space-y-2">
+                <label for="phone" class="block text-sm font-medium text-gray-700 required">
+                  Phone
+                </label>
+                <input 
+                  type="text" 
+                  id="phone" 
+                  name="phone" 
+                  placeholder="0300-1234567" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  required
+                />
+              </div>
+              
+              <!-- CNIC -->
+              <div class="space-y-2">
+                <label for="cnic" class="block text-sm font-medium text-gray-700 required">
+                  CNIC
+                </label>
+                <input 
+                  type="text" 
+                  id="cnic" 
+                  name="cnic" 
+                  placeholder="42201-1234567-8" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  required
+                />
+              </div>
+              
+              <!-- Father's CNIC -->
+              <div class="space-y-2">
+                <label for="fatherName" class="block text-sm font-medium text-gray-700 required">
+                  Father's CNIC (optional)
+                </label>
+                <input 
+                  type="text" 
+                  id="fatherCnic" 
+                  name="fatherCnic"
+                  placeholder="Father's CNIC (optional)" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  required
+                />
+              </div>
+              
+              <!-- Date of Birth -->
+              <div class="space-y-2">
+                <label for="dob" class="block text-sm font-medium text-gray-700 required">
+                  Date of Birth
+                </label>
+                <input 
+                  type="date" 
+                  id="dob" 
+                  name="dob"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  required
+                />
+              </div>
+              
+              <!-- Gender -->
+              <div class="space-y-2">
+                <label for="gender" class="block text-sm font-medium text-gray-700 required">
+                    Select gender
+                </label>
+                <select 
+                  id="gender" 
+                  name="gender" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  required
+                >
+                  <option value="" disabled selected>Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Address Information -->
+          <div class="bg-gray-50 border border-gray-200 rounded-md p-4">
+            <h2 class="text-lg font-medium text-[#0066b3] mb-4">Address Information</h2>
+            
+            <div class="grid grid-cols-1 gap-6">
+              <!-- Address -->
+              <div class="space-y-2">
+                <label for="address" class="block text-sm font-medium text-gray-700 required">
+                  Address
+                </label>
+                <textarea 
+                  id="address" 
+                  name="address" 
+                  rows="3" 
+                  placeholder="Complete Address" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  required
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Educational Information -->
+          <div class="bg-gray-50 border border-gray-200 rounded-md p-4">
+            <h2 class="text-lg font-medium text-[#0066b3] mb-4">Educational Information</h2>
+            
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <!-- Education -->
+              <div class="space-y-2">
+                <label for="education" class="block text-sm font-medium text-gray-700 required">
+                  Last Education
+                </label>
+                <select 
+                  id="education" 
+                  name="education" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  required
+                >
+                  <option value="" disabled selected>Select Education</option>
+                  <option value="matriculation">Matriculation / O-Level</option>
+                  <option value="intermediate">Intermediate / A-Level</option>
+                  <option value="bachelor">Bachelor's Degree</option>
+                  <option value="master">Master's Degree</option>
+                  <option value="phd">PhD</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              
+              <!-- Institute -->
+              <div class="space-y-2">
+                <label for="institute" class="block text-sm font-medium text-gray-700">
+                  Institute
+                </label>
+                <input 
+                  type="text" 
+                  id="institute" 
+                  name="institute" 
+                  placeholder="Institute Name" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                />
+              </div>
+            </div>
+          </div>
+          
+          <!-- Separator for Buttons -->
+          <div class="pt-4">
+             <!-- Terms and Submission -->
+          <div class="space-y-4">
+            <!-- Terms -->
+            <div class="flex items-start">
+              <div class="flex items-center h-5">
+                <input 
+                  type="checkbox" 
+                  id="terms" 
+                  name="terms" 
+                  class="focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded"
+                  required
+                />
+              </div>
+              <div class="ml-3 text-sm">
+                <label for="terms" class="font-medium text-gray-700">
+                  I agree to the terms and conditions
+                </label>
+                <p class="text-gray-500">
+                  By submitting this form, I confirm that all the information provided is accurate, 
+                  and I agree to follow all rules and regulations of Saylani Welfare.
+                </p>
+              </div>
+            </div>
+          </div>
+            </div>
+            <div class="flex justify-center space-x-4">
+              <button
+                type="submit"
+                class="px-6 py-2 bg-[#0066b3] text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              >
+                Submit
+              </button>
+              <button
+                type="reset"
+                class="px-6 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

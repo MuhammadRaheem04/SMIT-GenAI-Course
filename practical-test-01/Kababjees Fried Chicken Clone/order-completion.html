@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Completed - Kababjees Fried Chicken</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #ca0000;
+      --primary-dark: #a80000;
+      --primary-light: #ff0f0f;
+      --secondary: #222222;
+      --secondary-light: #333333;
+      --accent: #f8c100;
+      --accent-light: #ffde4d;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .text-primary {
+      color: var(--primary);
+    }
+    
+    .bg-primary {
+      background-color: var(--primary);
+    }
+    
+    .hover\:bg-primary-dark:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    .border-primary {
+      border-color: var(--primary);
+    }
+
+    .bg-accent {
+      background-color: var(--accent);
+    }
+    
+    .hover\:bg-accent-light:hover {
+      background-color: var(--accent-light);
+    }
+
+    /* Animation for success checkmark */
+    @keyframes checkmark {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    .checkmark-animation {
+      animation: checkmark 0.8s ease-in-out forwards;
+    }
+    
+    /* Animation for order item */
+    @keyframes slideUp {
+      0% {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    .slide-up {
+      animation: slideUp 0.5s ease-out forwards;
+    }
+    
+    .slide-up-delay-1 {
+      animation: slideUp 0.5s ease-out 0.2s forwards;
+      opacity: 0;
+    }
+    
+    .slide-up-delay-2 {
+      animation: slideUp 0.5s ease-out 0.4s forwards;
+      opacity: 0;
+    }
+    
+    .slide-up-delay-3 {
+      animation: slideUp 0.5s ease-out 0.6s forwards;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="bg-white shadow-md fixed top-0 w-full z-50 h-auto">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-3">
+        <!-- Logo -->
+         <div class="flex items-center justify-center space-x-2">
+             <a href="index.html" class="text-2xl font-bold text-primary flex items-center space-x-2">
+               <img src="/images/logo.png" alt="Kababjees Logo" class="h-32 w-32">
+               <span class="mt-6">Kababjees</span>
+         </div>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="font-poppins font-semibold text-secondary hover:text-primary transition duration-300">
+            Home
+          </a>
+          <a href="menu.html" class="font-poppins font-semibold text-secondary hover:text-primary transition duration-300">
+            Menu
+          </a>
+          <a href="about.html" class="font-poppins font-semibold text-secondary hover:text-primary transition duration-300">
+            About
+          </a>
+          <a href="contact.html" class="font-poppins font-semibold text-secondary hover:text-primary transition duration-300">
+            Contact
+          </a>
+          <a href="menu.html" class="bg-primary hover:bg-primary-dark text-white font-poppins font-bold py-2 px-6 rounded-full transition duration-300">
+            Order Now
+          </a>
+        </nav>
+        
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button 
+            id="mobile-menu-button" 
+            class="text-secondary focus:outline-none"
+            aria-label="Toggle mobile menu"
+          >
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile Navigation -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <a href="index.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          Home
+        </a>
+        <a href="menu.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          Menu
+        </a>
+        <a href="about.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          About
+        </a>
+        <a href="contact.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          Contact
+        </a>
+        <a href="menu.html" class="inline-block bg-primary hover:bg-primary-dark text-white font-poppins font-bold py-2 px-6 rounded-full my-2">
+            Order Now
+          </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-24 pb-16 h-auto">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <!-- Success Message -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-8 text-center mt-28">
+          <div class="flex justify-center mb-6">
+            <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center">
+              <i class="fas fa-check text-green-500 text-5xl checkmark-animation"></i>
+            </div>
+          </div>
+          <h1 class="text-3xl font-bold mb-2">Order Successful!</h1>
+          <p class="text-gray-600 text-lg mb-6">Thank you for your order! Your delicious food is being prepared.</p>
+          <div class="text-lg font-semibold mb-2">Order #<span id="order-number">12345</span></div>
+          <div class="text-gray-500 mb-6">Estimated delivery time: 30-45 minutes</div>
+          <div class="flex justify-center">
+            <a href="index.html" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 inline-block mr-4">
+              Back to Home
+            </a>
+            <a href="menu.html" class="bg-accent hover:bg-accent-light text-gray-900 font-bold py-3 px-8 rounded-full transition duration-300 inline-block">
+              Order More
+            </a>
+          </div>
+        </div>
+        
+        <!-- Order Details -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+          <div class="bg-gray-100 p-6 border-b border-gray-200">
+            <h2 class="text-2xl font-bold">Order Details</h2>
+          </div>
+          
+          <!-- Order Item (will be filled dynamically) -->
+          <div class="p-6 slide-up">
+            <div class="flex flex-col md:flex-row items-center">
+              <div class="md:w-1/4 mb-4 md:mb-0">
+                <img 
+                  id="order-item-image" 
+                  src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200" 
+                  alt="Order Item" 
+                  class="w-32 h-32 object-cover rounded-lg mx-auto"
+                >
+              </div>
+              <div class="md:w-3/4 md:pl-6">
+                <div class="flex justify-between items-start">
+                  <h3 id="order-item-name" class="text-xl font-bold">Original Fried Chicken</h3>
+                  <span id="order-item-price" class="font-bold text-primary">$12.99</span>
+                </div>
+                <div id="order-item-quantity" class="text-gray-600 mb-2">Quantity: 1</div>
+                <div id="order-item-description" class="text-gray-600">Our classic crispy fried chicken with secret blend of herbs and spices.</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="border-t border-gray-200 p-6 slide-up-delay-1">
+            <div class="flex justify-between font-semibold">
+              <span>Subtotal</span>
+              <span id="order-subtotal">$12.99</span>
+            </div>
+            <div class="flex justify-between text-gray-600 mt-2">
+              <span>Delivery Fee</span>
+              <span>$2.50</span>
+            </div>
+            <div class="flex justify-between text-gray-600 mt-2">
+              <span>Tax</span>
+              <span id="order-tax">$1.30</span>
+            </div>
+            <div class="flex justify-between font-bold text-lg mt-4 pt-4 border-t border-gray-200">
+              <span>Total</span>
+              <span id="order-total" class="text-primary">$16.79</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Delivery Information -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden slide-up-delay-2">
+          <div class="bg-gray-100 p-6 border-b border-gray-200">
+            <h2 class="text-2xl font-bold">Delivery Information</h2>
+          </div>
+          <div class="p-6">
+            <div class="flex items-start mb-4">
+              <div class="text-primary mr-3">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold">Delivery Address</h3>
+                <p class="text-gray-600">123 Main Street, Apt 4B<br>Karachi, 75300</p>
+              </div>
+            </div>
+            <div class="flex items-start mb-4">
+              <div class="text-primary mr-3">
+                <i class="fas fa-user"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold">Contact</h3>
+                <p class="text-gray-600">John Doe<br>+92 300 1234567</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="text-primary mr-3">
+                <i class="fas fa-credit-card"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold">Payment Method</h3>
+                <p class="text-gray-600">Cash on Delivery</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Order Tracking -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mt-8 slide-up-delay-3">
+          <h2 class="text-2xl font-bold mb-6">Order Status</h2>
+          <div class="relative">
+            <!-- Progress bar -->
+            <div class="h-1 bg-gray-200 absolute top-5 left-0 right-0 mx-14 md:mx-20 z-0"></div>
+            <div class="h-1 bg-primary absolute top-5 left-0 right-0 mx-14 md:mx-20 z-0" style="width: 25%;"></div>
+            
+            <!-- Steps -->
+            <div class="flex justify-between relative z-10">
+              <div class="text-center">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center mb-2 mx-auto">
+                  <i class="fas fa-check text-white"></i>
+                </div>
+                <div class="text-sm md:text-base font-medium">Confirmed</div>
+              </div>
+              
+              <div class="text-center">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-gray-200 rounded-full flex items-center justify-center mb-2 mx-auto">
+                  <i class="fas fa-utensils text-gray-500"></i>
+                </div>
+                <div class="text-sm md:text-base font-medium text-gray-500">Preparing</div>
+              </div>
+              
+              <div class="text-center">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-gray-200 rounded-full flex items-center justify-center mb-2 mx-auto">
+                  <i class="fas fa-motorcycle text-gray-500"></i>
+                </div>
+                <div class="text-sm md:text-base font-medium text-gray-500">On the way</div>
+              </div>
+              
+              <div class="text-center">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-gray-200 rounded-full flex items-center justify-center mb-2 mx-auto">
+                  <i class="fas fa-home text-gray-500"></i>
+                </div>
+                <div class="text-sm md:text-base font-medium text-gray-500">Delivered</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white pt-12 pb-6">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">Kababjees</h3>
+          <p class="text-gray-400 mb-4">
+            The best fried chicken with a unique Pakistani twist. Crispy, juicy, and full of flavor.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+            <li><a href="menu.html" class="text-gray-400 hover:text-white transition">Menu</a></li>
+            <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+            <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Order Online</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+              <span>123 Main Street, Karachi, Pakistan</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone mt-1 mr-3"></i>
+              <span>+92 123 456 7890</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope mt-1 mr-3"></i>
+              <span>info@kababjees.com</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Opening Hours</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li class="flex justify-between">
+              <span>Monday - Friday</span>
+              <span>11:00 AM - 10:00 PM</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Saturday - Sunday</span>
+              <span>10:00 AM - 11:00 PM</span>
+            </li>
+            <li class="flex justify-between pt-2 text-accent">
+              <span>Delivery Hours</span>
+              <span>11:00 AM - 9:30 PM</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 pt-6 text-center text-gray-400">
+        <p>&copy; 2023 Kababjees. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = this.querySelector('i');
+      
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      }
+    });
+
+    // Parse URL parameters to get order details
+    function getOrderDetailsFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      
+      // Get item details
+      const itemName = params.get('name') || 'Original Fried Chicken';
+      const itemPrice = params.get('price') || '12.99';
+      const itemImage = params.get('image') || 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200';
+      const itemQuantity = params.get('quantity') || '1';
+      const itemDescription = params.get('description') || 'Our classic crispy fried chicken with secret blend of herbs and spices.';
+      
+      // Display details on the page
+      document.getElementById('order-item-name').textContent = itemName;
+      document.getElementById('order-item-price').textContent = '$' + itemPrice;
+      document.getElementById('order-item-image').src = decodeURIComponent(itemImage);
+      document.getElementById('order-item-quantity').textContent = 'Quantity: ' + itemQuantity;
+      document.getElementById('order-item-description').textContent = itemDescription;
+      
+      // Calculate and update order totals
+      const quantity = parseInt(itemQuantity, 10);
+      const price = parseFloat(itemPrice);
+      const subtotal = price * quantity;
+      const tax = subtotal * 0.1; // Assuming 10% tax
+      const total = subtotal + tax + 2.50; // Adding $2.50 delivery fee
+      
+      document.getElementById('order-subtotal').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('order-tax').textContent = '$' + tax.toFixed(2);
+      document.getElementById('order-total').textContent = '$' + total.toFixed(2);
+      
+      // Generate a random order number
+      const orderNumber = Math.floor(10000 + Math.random() * 90000);
+      document.getElementById('order-number').textContent = orderNumber;
+    }
+    
+    // Run when the page loads
+    window.addEventListener('DOMContentLoaded', getOrderDetailsFromURL);
+  </script>
+</body>
+</html>

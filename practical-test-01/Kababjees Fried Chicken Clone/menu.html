@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Gallery - Kababjees Fried Chicken</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #ca0000;
+      --primary-dark: #a80000;
+      --primary-light: #ff0f0f;
+      --secondary: #222222;
+      --secondary-light: #333333;
+      --accent: #f8c100;
+      --accent-light: #ffde4d;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .text-primary {
+      color: var(--primary);
+    }
+    
+    .border-primary {
+      border-color: var(--primary);
+    }
+    
+    .hover\:text-primary:hover {
+      color: var(--primary);
+    }
+    
+    .hover\:border-primary:hover {
+      border-color: var(--primary);
+    }
+    
+    .bg-primary {
+      background-color: var(--primary);
+    }
+    
+    .hover\:bg-primary-dark:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    /* Animation for image gallery */
+    .gallery-item {
+      transition: all 0.3s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .gallery-modal {
+      transition: opacity 0.3s ease;
+    }
+    
+    /* Custom scrollbar for category navigation */
+    .category-scroller::-webkit-scrollbar {
+      height: 5px;
+    }
+    
+    .category-scroller::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    
+    .category-scroller::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 10px;
+    }
+    
+    .category-scroller::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-dark);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+   <header class="bg-white shadow-md fixed top-0 w-full z-50 h-auto">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-3">
+        <!-- Logo -->
+         <div class="flex items-center justify-center space-x-2">
+             <a href="index.html" class="text-2xl font-bold text-primary flex items-center space-x-2">
+               <img src="/images/logo.png" alt="Kababjees Logo" class="h-32 w-32">
+               <span class="mt-6">Kababjees</span>
+         </div>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="font-poppins font-semibold text-secondary hover:text-primary transition duration-300">
+            Home
+          </a>
+          <a href="menu.html" class="font-poppins font-semibold text-primary hover:text-primary transition duration-300">
+            Menu
+          </a>
+          <a href="about.html" class="font-poppins font-semibold text-secondary hover:text-primary transition duration-300">
+            About
+          </a>
+          <a href="contact.html" class="font-poppins font-semibold text-secondary hover:text-primary transition duration-300">
+            Contact
+          </a>
+          <a href="menu.html" class="bg-primary hover:bg-primary-dark text-white font-poppins font-bold py-2 px-6 rounded-full transition duration-300">
+            Order Now
+          </a>
+        </nav>
+        
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button 
+            id="mobile-menu-button" 
+            class="text-secondary focus:outline-none"
+            aria-label="Toggle mobile menu"
+          >
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile Navigation -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <a href="index.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          Home
+        </a>
+        <a href="menu.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          Menu
+        </a>
+        <a href="about.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          About
+        </a>
+        <a href="contact.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          Contact
+        </a>
+        <a href="menu.html" class="inline-block bg-primary hover:bg-primary-dark text-white font-poppins font-bold py-2 px-6 rounded-full my-2">
+          Order Now
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-24">
+    <section id="menu-gallery" class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-6 mt-12">Our <span class="text-primary">Menu Gallery</span></h2>
+        <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">
+          Browse through our delicious menu categories and explore our mouth-watering offerings that will satisfy your cravings.
+        </p>
+        
+        <!-- Category Tabs - Horizontal Scrollable on Mobile -->
+        <div class="category-scroller overflow-x-auto mb-12 pb-2">
+          <div class="flex whitespace-nowrap min-w-max md:justify-center md:min-w-0">
+            <button class="category-btn inline-block px-6 py-3 mx-1 bg-primary text-white rounded-full font-semibold" data-category="all">
+              All Items
+            </button>
+            <button class="category-btn inline-block px-6 py-3 mx-1 bg-white hover:bg-gray-100 rounded-full font-semibold" data-category="fried-chicken">
+              Fried Chicken
+            </button>
+            <button class="category-btn inline-block px-6 py-3 mx-1 bg-white hover:bg-gray-100 rounded-full font-semibold" data-category="burgers">
+              Burgers
+            </button>
+            <button class="category-btn inline-block px-6 py-3 mx-1 bg-white hover:bg-gray-100 rounded-full font-semibold" data-category="combo-meals">
+              Combo Meals
+            </button>
+            <button class="category-btn inline-block px-6 py-3 mx-1 bg-white hover:bg-gray-100 rounded-full font-semibold" data-category="sides">
+              Sides & Extras
+            </button>
+            <button class="category-btn inline-block px-6 py-3 mx-1 bg-white hover:bg-gray-100 rounded-full font-semibold" data-category="beverages">
+              Beverages
+            </button>
+          </div>
+        </div>
+        
+        <!-- Menu Gallery Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="gallery-container">
+          <!-- Fried Chicken Items -->
+          <div class="gallery-item cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg" data-category="fried-chicken">
+            <div class="relative h-48">
+              <img 
+                src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200" 
+                alt="Original Fried Chicken" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+                <div class="flex gap-2">
+                  <button class="view-item-btn text-white text-white bg-primary hover:bg-primary-dark py-2 px-4 rounded-lg font-semibold transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold">Original Fried Chicken</h3>
+                <span class="font-bold text-primary">$12.99</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">Our classic recipe with secret spices</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg" data-category="fried-chicken">
+            <div class="relative h-48">
+              <img 
+                src="https://images.unsplash.com/photo-1626074353765-517a681e40be?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200" 
+                alt="Spicy Fried Chicken" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+                <div class="flex gap-2">
+                  <button class="view-item-btn text-white text-white bg-primary hover:bg-primary-dark py-2 px-4 rounded-lg font-semibold transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold">Spicy Fried Chicken</h3>
+                <span class="font-bold text-primary">$13.99</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">Hot and spicy with an extra kick</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg" data-category="fried-chicken">
+            <div class="relative h-48">
+              <img 
+                src="/images/wings.jpeg" 
+                alt="Crispy Wings" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+                <div class="flex gap-2">
+                  <button class="view-item-btn text-white text-white bg-primary hover:bg-primary-dark py-2 px-4 rounded-lg font-semibold transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold">Crispy Wings</h3>
+                <span class="font-bold text-primary">$10.99</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">Wings with your choice of sauce</p>
+            </div>
+          </div>
+          
+          <!-- Burger Items -->
+          <div class="gallery-item cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg" data-category="burgers">
+            <div class="relative h-48">
+              <img 
+                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200" 
+                alt="Classic Chicken Burger" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+                <div class="flex gap-2">
+                  <button class="view-item-btn text-white text-white bg-primary hover:bg-primary-dark py-2 px-4 rounded-lg font-semibold transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold">Classic Chicken Burger</h3>
+                <span class="font-bold text-primary">$8.99</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">Crispy chicken with special sauce</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg" data-category="burgers">
+            <div class="relative h-48">
+              <img 
+                src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200" 
+                alt="Spicy Supreme Burger" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+                <div class="flex gap-2">
+                  <button class="view-item-btn text-white text-white bg-primary hover:bg-primary-dark py-2 px-4 rounded-lg font-semibold transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold">Spicy Supreme Burger</h3>
+                <span class="font-bold text-primary">$10.99</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">With jalapeños and chipotle mayo</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg" data-category="burgers">
+            <div class="relative h-48">
+              <img 
+                src="https://images.unsplash.com/photo-1585325701956-60dd9c8553bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200" 
+                alt="BBQ Chicken Burger" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+                <div class="flex gap-2">
+                  <button class="view-item-btn text-white text-white bg-primary hover:bg-primary-dark py-2 px-4 rounded-lg font-semibold transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold">BBQ Chicken Burger</h3>
+                <span class="font-bold text-primary">$9.99</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">With BBQ sauce and bacon</p>
+            </div>
+          </div>
+          
+          <!-- Combo Meals -->
+          <div class="gallery-item cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg" data-category="combo-meals">
+            <div class="relative h-48">
+              <img 
+                src="/images/family-bucket.jpg" 
+                alt="Family Bucket" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+                <div class="flex gap-2">
+                  <button class="view-item-btn text-white text-white bg-primary hover:bg-primary-dark py-2 px-4 rounded-lg font-semibold transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold">Family Bucket</h3>
+                <span class="font-bold text-primary">$24.99</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">12 pcs chicken, 4 sides, 4 drinks</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg" data-category="combo-meals">
+            <div class="relative h-48">
+              <img 
+                src="https://images.unsplash.com/photo-1582196016295-f8c8bd4b3a99?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200" 
+                alt="Burger Combo" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+                <div class="flex gap-2">
+                  <button class="view-item-btn text-white text-white bg-primary hover:bg-primary-dark py-2 px-4 rounded-lg font-semibold transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold">Burger Combo</h3>
+                <span class="font-bold text-primary">$12.99</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">Burger, fries, and drink</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg" data-category="combo-meals">
+            <div class="relative h-48">
+              <img 
+                src="https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200" 
+                alt="Chicken Box" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+                <div class="flex gap-2">
+                  <button class="view-item-btn text-white text-white bg-primary hover:bg-primary-dark py-2 px-4 rounded-lg font-semibold transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold">Chicken Box</h3>
+                <span class="font-bold text-primary">$14.99</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">4 pcs chicken, 2 sides, 1 drink</p>
+            </div>
+          </div>
+          
+          <!-- Sides -->
+          <div class="gallery-item cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg" data-category="sides">
+            <div class="relative h-48">
+              <img 
+                src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200" 
+                alt="French Fries" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+                <div class="flex gap-2">
+                  <button class="view-item-btn text-white text-white bg-primary hover:bg-primary-dark py-2 px-4 rounded-lg font-semibold transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold">French Fries</h3>
+                <span class="font-bold text-primary">$3.99</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">Crispy golden fries with seasoning</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg" data-category="sides">
+            <div class="relative h-48">
+              <img 
+                src="https://images.unsplash.com/photo-1603532648955-039310d9ed75?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200" 
+                alt="Coleslaw" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+                <div class="flex gap-2">
+                  <button class="view-item-btn text-white text-white bg-primary hover:bg-primary-dark py-2 px-4 rounded-lg font-semibold transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold">Coleslaw</h3>
+                <span class="font-bold text-primary">$2.99</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">Fresh and creamy house coleslaw</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg" data-category="sides">
+            <div class="relative h-48">
+              <img 
+                src="https://images.unsplash.com/photo-1550950158-d0d960dff51b?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200" 
+                alt="Chicken Nuggets" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+                <div class="flex gap-2">
+                  <button class="view-item-btn text-white text-white bg-primary hover:bg-primary-dark py-2 px-4 rounded-lg font-semibold transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold">Chicken Nuggets</h3>
+                <span class="font-bold text-primary">$5.99</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">Bite-sized nuggets with dipping sauce</p>
+            </div>
+          </div>
+          
+          <!-- Beverages -->
+          <div class="gallery-item cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg" data-category="beverages">
+            <div class="relative h-48">
+              <img 
+                src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200" 
+                alt="Soft Drinks" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+                <div class="flex gap-2">
+                  <button class="view-item-btn text-white text-white bg-primary hover:bg-primary-dark py-2 px-4 rounded-lg font-semibold transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold">Soft Drinks</h3>
+                <span class="font-bold text-primary">$2.49</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">Coke, Sprite, Fanta, and more</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg" data-category="beverages">
+            <div class="relative h-48">
+              <img 
+                src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200" 
+                alt="Milkshakes" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+                <div class="flex gap-2">
+                  <button class="view-item-btn text-white text-white bg-primary hover:bg-primary-dark py-2 px-4 rounded-lg font-semibold transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold">Milkshakes</h3>
+                <span class="font-bold text-primary">$4.99</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">Chocolate, vanilla, or strawberry</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg" data-category="beverages">
+            <div class="relative h-48">
+              <img 
+                src="https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200" 
+                alt="Fresh Juices" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+                <div class="flex gap-2">
+                  <button class="view-item-btn text-white text-white bg-primary hover:bg-primary-dark py-2 px-4 rounded-lg font-semibold transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold">Fresh Juices</h3>
+                <span class="font-bold text-primary">$3.99</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">Orange, apple, or mixed fruit</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- "No Items Found" Message (Hidden by default) -->
+        <div id="no-items-message" class="hidden text-center py-12">
+          <i class="fas fa-search text-gray-400 text-5xl mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">No items found</h3>
+          <p class="text-gray-600">Try selecting a different category or contact us for special requests.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Item Detail Modal -->
+    <div id="detail-modal" class="gallery-modal fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center hidden">
+      <div class="bg-white rounded-xl w-full max-w-3xl mx-4 max-h-[80vh] overflow-y-auto">
+        <div class="relative">
+          <button id="close-modal" class="absolute top-4 right-4 bg-white p-2 rounded-full shadow-md z-10">
+            <i class="fas fa-times text-gray-800"></i>
+          </button>
+          <div id="modal-image-container" class="h-48 sm:h-64">
+            <img id="modal-image" src="" alt="Menu Item" class="w-full h-full object-cover">
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-4">
+            <h3 id="modal-title" class="text-2xl font-bold"></h3>
+            <span id="modal-price" class="text-xl font-bold text-primary"></span>
+          </div>
+          <p id="modal-description" class="text-gray-600 mb-6"></p>
+          
+          <div class="border-t border-gray-200 pt-6 mb-6">
+            <h4 class="font-bold text-lg mb-4">Nutrition Information</h4>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div class="text-center p-3 bg-gray-100 rounded-lg">
+                <span class="block text-lg font-bold">320</span>
+                <span class="text-sm text-gray-600">Calories</span>
+              </div>
+              <div class="text-center p-3 bg-gray-100 rounded-lg">
+                <span class="block text-lg font-bold">18g</span>
+                <span class="text-sm text-gray-600">Protein</span>
+              </div>
+              <div class="text-center p-3 bg-gray-100 rounded-lg">
+                <span class="block text-lg font-bold">12g</span>
+                <span class="text-sm text-gray-600">Fat</span>
+              </div>
+              <div class="text-center p-3 bg-gray-100 rounded-lg">
+                <span class="block text-lg font-bold">24g</span>
+                <span class="text-sm text-gray-600">Carbs</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex flex-col sm:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 sm:mb-0">
+              <span class="mr-2 font-semibold">Quantity:</span>
+              <div class="flex border border-gray-300 rounded-lg overflow-hidden">
+                <button id="decrease-quantity" class="px-3 py-1 bg-gray-100 hover:bg-gray-200">-</button>
+                <input id="quantity-input" type="number" min="1" value="1" class="w-12 text-center">
+                <button id="increase-quantity" class="px-3 py-1 bg-gray-100 hover:bg-gray-200">+</button>
+              </div>
+            </div>
+            
+            <a id="modal-add-to-order" href="order-completion.html" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 inline-block">
+              Add to Order
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white pt-12 pb-6 mt-16">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">Kababjees</h3>
+          <p class="text-gray-400 mb-4">
+            The best fried chicken with a unique Pakistani twist. Crispy, juicy, and full of flavor.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+            <li><a href="menu.html" class="text-gray-400 hover:text-white transition">Menu</a></li>
+            <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+            <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Order Online</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+              <span>123 Main Street, Karachi, Pakistan</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone mt-1 mr-3"></i>
+              <span>+92 123 456 7890</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope mt-1 mr-3"></i>
+              <span>info@kababjees.com</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Opening Hours</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li class="flex justify-between">
+              <span>Monday - Friday</span>
+              <span>11:00 AM - 10:00 PM</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Saturday - Sunday</span>
+              <span>10:00 AM - 11:00 PM</span>
+            </li>
+            <li class="flex justify-between pt-2 text-accent">
+              <span>Delivery Hours</span>
+              <span>11:00 AM - 9:30 PM</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 pt-6 text-center text-gray-400">
+        <p>&copy; 2023 Kababjees. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = this.querySelector('i');
+      
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      }
+    });
+    
+    // Category Filtering
+    document.addEventListener('DOMContentLoaded', function() {
+      const categoryButtons = document.querySelectorAll('.category-btn');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      const noItemsMessage = document.getElementById('no-items-message');
+      
+      categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Update active button style
+          categoryButtons.forEach(btn => {
+            btn.classList.remove('bg-primary', 'text-white');
+            btn.classList.add('bg-white', 'hover:bg-gray-100');
+          });
+          this.classList.remove('bg-white', 'hover:bg-gray-100');
+          this.classList.add('bg-primary', 'text-white');
+          
+          const category = this.dataset.category;
+          let visibleItems = 0;
+          
+          // Show/hide items based on category
+          galleryItems.forEach(item => {
+            if (category === 'all' || item.dataset.category === category) {
+              item.classList.remove('hidden');
+              visibleItems++;
+            } else {
+              item.classList.add('hidden');
+            }
+          });
+          
+          // Show "no items" message if needed
+          if (visibleItems === 0) {
+            noItemsMessage.classList.remove('hidden');
+          } else {
+            noItemsMessage.classList.add('hidden');
+          }
+        });
+      });
+      
+      // Item Detail Modal
+      const detailModal = document.getElementById('detail-modal');
+      const closeModalBtn = document.getElementById('close-modal');
+      const viewItemButtons = document.querySelectorAll('.view-item-btn');
+      const modalImage = document.getElementById('modal-image');
+      const modalTitle = document.getElementById('modal-title');
+      const modalPrice = document.getElementById('modal-price');
+      const modalDescription = document.getElementById('modal-description');
+      const modalAddToOrder = document.getElementById('modal-add-to-order');
+      const quantityInput = document.getElementById('quantity-input');
+      const increaseBtn = document.getElementById('increase-quantity');
+      const decreaseBtn = document.getElementById('decrease-quantity');
+      
+      // Open modal when "View Details" is clicked
+      viewItemButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Get the details from the parent item
+          const item = this.closest('.gallery-item');
+          const image = item.querySelector('img').src;
+          const name = item.querySelector('h3').textContent;
+          const price = item.querySelector('.text-primary').textContent;
+          const description = item.querySelector('p').textContent;
+          
+          // Update modal content
+          modalImage.src = image;
+          modalTitle.textContent = name;
+          modalPrice.textContent = price;
+          modalDescription.textContent = description;
+          
+          // Update the "Add to Order" link with the item details
+          updateAddToOrderLink();
+          
+          // Show modal
+          detailModal.classList.remove('hidden');
+          document.body.classList.add('overflow-hidden');
+        });
+      });
+      
+      // Close modal when the close button is clicked
+      closeModalBtn.addEventListener('click', function() {
+        detailModal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      });
+      
+      // Close modal when clicking outside the modal content
+      detailModal.addEventListener('click', function(e) {
+        if (e.target === detailModal) {
+          detailModal.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+        }
+      });
+      
+      // Quantity handlers
+      increaseBtn.addEventListener('click', function() {
+        quantityInput.value = parseInt(quantityInput.value, 10) + 1;
+        updateAddToOrderLink();
+      });
+      
+      decreaseBtn.addEventListener('click', function() {
+        const currentValue = parseInt(quantityInput.value, 10);
+        if (currentValue > 1) {
+          quantityInput.value = currentValue - 1;
+          updateAddToOrderLink();
+        }
+      });
+      
+      quantityInput.addEventListener('change', updateAddToOrderLink);
+      
+      // Update the "Add to Order" link with current details
+      function updateAddToOrderLink() {
+        const name = modalTitle.textContent;
+        const price = modalPrice.textContent.replace('$', '');
+        const image = modalImage.src;
+        const description = modalDescription.textContent;
+        const quantity = quantityInput.value;
+        
+        const orderLink = `order-completion.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&image=${encodeURIComponent(image)}&quantity=${quantity}&description=${encodeURIComponent(description)}`;
+        modalAddToOrder.href = orderLink;
+      }
+    });
+  </script>
+</body>
+</html>

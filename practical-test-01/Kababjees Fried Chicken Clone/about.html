@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Kababjees Fried Chicken</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #ca0000;
+      --primary-dark: #a80000;
+      --primary-light: #ff0f0f;
+      --secondary: #222222;
+      --secondary-light: #333333;
+      --accent: #f8c100;
+      --accent-light: #ffde4d;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .text-primary {
+      color: var(--primary);
+    }
+    
+    .bg-primary {
+      background-color: var(--primary);
+    }
+    
+    .hover\:bg-primary-dark:hover {
+      background-color: var(--primary-dark);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+ <!-- Header -->
+ <header class="bg-white shadow-md fixed top-0 w-full z-50 h-auto">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-3">
+        <!-- Logo -->
+         <div class="flex items-center justify-center space-x-2">
+             <a href="index.html" class="text-2xl font-bold text-primary flex items-center space-x-2">
+               <img src="/images/logo.png" alt="Kababjees Logo" class="h-32 w-32">
+               <span class="mt-6">Kababjees</span>
+         </div>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="font-poppins font-semibold text-secondary transition duration-300">
+            Home
+          </a>
+          <a href="menu.html" class="font-poppins font-semibold text-secondary hover:text-primary transition duration-300">
+            Menu
+          </a>
+          <a href="about.html" class="font-poppins font-semibold text-primary hover:text-primary transition duration-300">
+            About
+          </a>
+          <a href="contact.html" class="font-poppins font-semibold text-secondary hover:text-primary transition duration-300">
+            Contact
+          </a>
+          <a href="menu.html" class="bg-primary hover:bg-primary-dark text-white font-poppins font-bold py-2 px-6 rounded-full transition duration-300">
+            Order Now
+          </a>
+        </nav>
+        
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button 
+            id="mobile-menu-button" 
+            class="text-secondary focus:outline-none"
+            aria-label="Toggle mobile menu"
+          >
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile Navigation -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <a href="index.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          Home
+        </a>
+        <a href="menu.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          Menu
+        </a>
+        <a href="about.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          About
+        </a>
+        <a href="contact.html" class="block py-2 font-poppins font-semibold text-secondary hover:text-primary">
+          Contact
+        </a>
+        <a href="menu.html" class="inline-block bg-primary hover:bg-primary-dark text-white font-poppins font-bold py-2 px-6 rounded-full my-2">
+            Order Now
+          </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-24">
+    <section id="about" class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row-reverse items-center justify-evenly gap-12">
+          <div class="md:w-1/2 h-full">
+            <img 
+              src="https://kababjees.com/images/highway%20pic1.jpg" 
+              alt="Our Restaurant" 
+              class="rounded-xl shadow-lg w-full h-auto"
+            >
+          </div>
+          
+          <div class="md:w-1/2">
+            <h2 class="text-4xl font-bold mb-6 mt-12">About <span class="text-primary">Kababjees</span></h2>
+            
+            <p class="text-gray-600 mb-6">
+              Kababjees has been serving delicious fried chicken since 1998. What started as a small family restaurant has now grown into one of the most loved fried chicken chains in the country.
+            </p>
+            
+            <p class="text-gray-600 mb-6">
+              Our secret recipe has been perfected over the years, combining a special blend of herbs and spices that make our chicken truly unique. Every piece is hand-breaded and cooked to perfection, ensuring that crispy exterior and juicy interior that our customers love.
+            </p>
+            
+            <p class="text-gray-600 mb-8">
+              At Kababjees, we believe in using only the highest quality ingredients. Our chicken is sourced from local farms, and we prepare everything fresh daily. We're committed to providing our customers with the best food and service possible.
+            </p>
+            
+            <div class="grid grid-cols-2 gap-6 mb-8">
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-primary text-xl mr-3"></i>
+                <span class="font-semibold">Fresh Ingredients</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-primary text-xl mr-3"></i>
+                <span class="font-semibold">Secret Recipe</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-primary text-xl mr-3"></i>
+                <span class="font-semibold">Friendly Service</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-primary text-xl mr-3"></i>
+                <span class="font-semibold">Quality Guaranteed</span>
+              </div>
+            </div>
+            
+            <a href="contact.html" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 inline-block">
+              Contact Us
+            </a>
+          </div>
+        </div>
+        
+        <!-- Testimonials -->
+        <div class="mt-20">
+          <h2 class="text-3xl font-bold text-center mb-12">What Our <span class="text-primary">Customers Say</span></h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-lg shadow-md p-8">
+              <div class="flex items-center text-amber-500 mb-4">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="text-gray-600 mb-6 italic">
+                "The best fried chicken I've ever had! Crispy on the outside, juicy on the inside, and the spices are incredible. I'm a regular now!"
+              </p>
+              <div class="flex items-center">
+                <img 
+                  src="https://randomuser.me/api/portraits/women/23.jpg" 
+                  alt="Customer" 
+                  class="w-12 h-12 rounded-full mr-4"
+                >
+                <div>
+                  <h4 class="font-bold">Ayesha Malik</h4>
+                  <p class="text-sm text-gray-500">Karachi</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-8">
+              <div class="flex items-center text-amber-500 mb-4">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <p class="text-gray-600 mb-6 italic">
+                "The family bucket is our go-to for weekend dinners. Everyone loves it, and the portions are generous. Great value for money!"
+              </p>
+              <div class="flex items-center">
+                <img 
+                  src="https://randomuser.me/api/portraits/men/42.jpg" 
+                  alt="Customer" 
+                  class="w-12 h-12 rounded-full mr-4"
+                >
+                <div>
+                  <h4 class="font-bold">Hasan Ahmed</h4>
+                  <p class="text-sm text-gray-500">Lahore</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-8">
+              <div class="flex items-center text-amber-500 mb-4">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="text-gray-600 mb-6 italic">
+                "I love their spicy chicken burger! The flavor combination is perfect, and the service is always fast and friendly. Highly recommend!"
+              </p>
+              <div class="flex items-center">
+                <img 
+                  src="https://randomuser.me/api/portraits/women/58.jpg" 
+                  alt="Customer" 
+                  class="w-12 h-12 rounded-full mr-4"
+                >
+                <div>
+                  <h4 class="font-bold">Sara Khan</h4>
+                  <p class="text-sm text-gray-500">Islamabad</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (Same as Home Page) -->
+  <footer class="bg-gray-900 text-white pt-12 pb-6">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">Kababjees</h3>
+          <p class="text-gray-400 mb-4">
+            The best fried chicken with a unique Pakistani twist. Crispy, juicy, and full of flavor.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+            <li><a href="menu.html" class="text-gray-400 hover:text-white transition">Menu</a></li>
+            <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+            <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Order Online</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+              <span>123 Main Street, Karachi, Pakistan</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone mt-1 mr-3"></i>
+              <span>+92 123 456 7890</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope mt-1 mr-3"></i>
+              <span>info@kababjees.com</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Opening Hours</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li class="flex justify-between">
+              <span>Monday - Friday</span>
+              <span>11:00 AM - 10:00 PM</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Saturday - Sunday</span>
+              <span>10:00 AM - 11:00 PM</span>
+            </li>
+            <li class="flex justify-between pt-2 text-accent">
+              <span>Delivery Hours</span>
+              <span>11:00 AM - 9:30 PM</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 pt-6 text-center text-gray-400">
+        <p>&copy; 2023 Kababjees. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = this.querySelector('i');
+      
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      }
+    });
+  </script>
+</body>
+</html>
